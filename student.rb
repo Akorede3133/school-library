@@ -5,4 +5,9 @@ class Student < Person
     super(id, age, name, parent_permission)
     @classroom = classroom
   end
+
+  def play_hook
+    "¯\(ツ)/¯"
+  end
 end
+
