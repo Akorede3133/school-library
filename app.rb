@@ -46,6 +46,8 @@ class App
       create_rental
     when "6"
       print_rental_with_id
+    when "7"
+      exit_app
     else
       start
     end
@@ -164,5 +166,10 @@ class App
       start
     end
     start
+  end
+
+  def exit_app
+    puts "Thank you for using this app!\n\n"
+    exit
   end
 end
