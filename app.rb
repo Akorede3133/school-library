@@ -16,4 +16,10 @@ class App
   def get_input
     @input = gets.chomp
   end
+
+  def start
+    give_instruction
+    get_input
+    execute
+  end
 end
