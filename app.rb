@@ -1,10 +1,16 @@
+require_relative 'student'
+require_relative 'classroom'
+require_relative 'teacher'
+require_relative 'book'
+
 class App
-  attr_accessor :input, :person_type
+  attr_accessor :input, :person_type, :books
 
   def initialize
     @input = ''
     @person_type = ''
     @persons = []
+    @books = []
   end
 
   def print_welcome_message
@@ -69,6 +75,17 @@ class App
     new_teacher = Teacher.new(age, specialization, name)
     @persons << new_teacher
     puts "Person created successfully"
+    start
+  end
+
+  def create_book
+    print "Title: "
+    title = gets.chomp
+    print "Author: "
+    author = gets.chomp
+    new_book = Book.new(title, author)
+    @books << new_book
+    puts "Book created successfully"
     start
   end
 end
