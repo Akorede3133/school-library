@@ -20,6 +20,5 @@ class App
   def start
     give_instruction
     get_input
-    execute
   end
 end
