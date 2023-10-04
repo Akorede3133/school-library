@@ -34,6 +34,8 @@ class App
     case input
       when "3"
         create_person
+      when "4"
+        create_book
       else
         start
     end
