@@ -4,8 +4,9 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rental'
 
+
 class App
-  attr_accessor :input, :person_type, :books, :rentals
+  attr_accessor :input, :person_type, :students, :persons, :books, :rentals
 
   def initialize
     @input = ''
@@ -15,12 +16,12 @@ class App
     @rentals = []
   end
 
-  def print_welcome_message
-    puts "Welcome to School Library App!"
-  end
-
   def give_instruction
     puts "\nPlease choose an option by entering a number\n1 - list all books\n2 - List all people\n3 - Create a person\n4 - Create a book\n5 - Create a rental\n6 - List all the rentals for a given person id\n7 - Exit"
+  end
+
+  def print_welcome_message
+    puts "Welcome to School Library App!"
   end
 
   def get_input
@@ -30,26 +31,27 @@ class App
   def start
     give_instruction
     get_input
+    execute
   end
 
   def execute
     case input
-    when "1"
-      print_books
-    when "2"
-      print_person
-    when "3"
-      create_person
-    when "4"
-      create_book
-    when "5"
-      create_rental
-    when "6"
-      print_rental_with_id
-    when "7"
-      exit_app
-    else
-      start
+      when "1"
+        print_books
+      when "2"
+        print_person
+      when "3"
+        create_person
+      when "4"
+        create_book
+      when "5"
+        create_rental
+      when "6"
+        print_rental_with_id
+      when "7"
+        exit_app
+      else
+        start
     end
   end
 
@@ -62,7 +64,7 @@ class App
       puts create_teacher
     end
   end
-
+  
   def create_student
     print "Age: "
     age = gets.chomp
@@ -165,9 +167,10 @@ class App
     else
       start
     end
+    
     start
   end
-
+  
   def exit_app
     puts "Thank you for using this app!\n\n"
     exit
