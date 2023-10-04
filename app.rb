@@ -2,15 +2,17 @@ require_relative 'student'
 require_relative 'classroom'
 require_relative 'teacher'
 require_relative 'book'
+require_relative 'rental'
 
 class App
-  attr_accessor :input, :person_type, :books
+  attr_accessor :input, :person_type, :books, :rentals
 
   def initialize
     @input = ''
     @person_type = ''
     @persons = []
     @books = []
+    @rentals = []
   end
 
   def print_welcome_message
@@ -89,5 +91,29 @@ class App
     @books << new_book
     puts "Book created successfully"
     start
+  end
+
+  def create_rental
+    if persons.length > 0 && books.length > 0
+      puts "select a book from the following list by number"
+      print_books_with_index
+      book_index = gets.chomp.to_i
+      puts
+      puts "select a person from the following list by number (not id)"
+      print_person_with_index
+      person_index = gets.chomp.to_i
+      puts
+      book_instance = books[book_index]
+      person_instance = persons[person_index]
+      print "Date: "
+      date = gets.chomp
+      new_rental = Rental.new(date, book_instance, person_instance)
+      @rentals << new_rental
+      puts "Rental created successfully"
+      start
+    else
+      puts "It appears there is no book or person available"
+      start
+    end
   end
 end
