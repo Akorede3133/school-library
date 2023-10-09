@@ -3,7 +3,7 @@ require_relative 'app_print'
 
 class RentalApp
   def create_new_rental(persons, books, rentals)
-    list =  Print.new
+    list = Print.new
     if persons.length.positive? && books.length.positive?
       puts 'select a book from the following list by number'
       list.print_books_with_index(books)
@@ -19,9 +19,9 @@ class RentalApp
       date = gets.chomp
       new_rental = Rental.new(date, book_instance, person_instance)
       rentals << new_rental
-      puts "Rental was created successfully"
+      puts 'Rental was created successfully'
     else
-      puts "Make sure you have records for books and people"
+      puts 'Make sure you have records for books and people'
     end
   end
 end

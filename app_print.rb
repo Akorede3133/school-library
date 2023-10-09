@@ -1,21 +1,21 @@
 class Print
   def print_person(persons)
-    if persons.length > 0
+    if persons.length.positive?
       persons.each do |person|
         puts "[#{person.class}] Name: #{person.name.capitalize}, ID: #{person.id}, Age: #{person.age}"
       end
     else
-      puts "List of people is empty"
+      puts 'List of people is empty'
     end
   end
 
   def print_books(books)
-    if books.length > 0
+    if books.length.positive?
       books.each do |book|
         puts "Title: \"#{book.title.capitalize}\", Author: #{book.author.capitalize}"
       end
     else
-      puts "List of books is empty"
+      puts 'List of books is empty'
     end
   end
 
@@ -36,10 +36,10 @@ class Print
     id = gets.chomp.to_i
     person = persons.select { |item| item.id == id }[0]
     puts 'Rentals:'
-    if person
-      person.rentals.each do |rental|
-        puts "Date: #{rental.date}, Book \"#{rental.book.title.capitalize}\" by #{rental.book.author.capitalize}"
-      end
+    return unless person
+
+    person.rentals.each do |rental|
+      puts "Date: #{rental.date}, Book \"#{rental.book.title.capitalize}\" by #{rental.book.author.capitalize}"
     end
   end
 end

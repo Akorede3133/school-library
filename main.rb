@@ -7,6 +7,7 @@ class Main
   def initialize
     @app = App.new
   end
+
   def give_instruction
     puts "\nPlease choose an option by entering a number"
     puts '1 - list all books'
@@ -24,19 +25,19 @@ class Main
     rental = RentalApp.new
     options = {
       '1' => -> { print.print_books(@app.books) },
-      '2' => -> { print.print_person(@app.persons)},
+      '2' => -> { print.print_person(@app.persons) },
       '3' => -> { @app.create_person },
-      '4' => -> {book.create_new_book(@app.books)},
+      '4' => -> { book.create_new_book(@app.books) },
       '5' => -> { rental.create_new_rental(@app.persons, @app.books, @app.rentals) },
-      '6' => -> {print.print_rental_with_id(@app.persons)},
-      '7' => -> { exit_app}
+      '6' => -> { print.print_rental_with_id(@app.persons) },
+      '7' => -> { exit_app }
     }
 
-    if (options.key?(user_choice))
+    if options.key?(user_choice)
       options[user_choice].call
     else
-      puts "You seem to have entered an invalid option"
-      puts "Please enter a valid option"
+      puts 'You seem to have entered an invalid option'
+      puts 'Please enter a valid option'
     end
   end
 
@@ -47,7 +48,7 @@ class Main
 
   def run_app
     puts 'Welcome to School Library App!'
-    while true
+    loop do
       give_instruction
       choice(gets.chomp)
     end
