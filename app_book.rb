@@ -1,5 +1,5 @@
 require_relative 'book'
-
+require 'json'
 class BookApp
   def create_new_book(books)
     print 'Title: '

@@ -2,6 +2,8 @@ require_relative 'app'
 require_relative 'app_print'
 require_relative 'app_book'
 require_relative 'app_rental'
+require_relative 'book'
+require 'json'
 
 class Main
   def initialize
@@ -42,6 +44,7 @@ class Main
   end
 
   def exit_app
+    @app.save_data
     puts "Thank you for using this app!\n\n"
     exit
   end

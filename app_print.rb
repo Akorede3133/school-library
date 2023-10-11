@@ -12,7 +12,11 @@ class Print
   def print_books(books)
     if books.length.positive?
       books.each do |book|
-        puts "Title: \"#{book.title.capitalize}\", Author: #{book.author.capitalize}"
+        if book
+          puts "Title: \"#{book.title.capitalize}\", Author: #{book.author.capitalize}"
+        else
+          puts 'A book is missing or has incomplete data.'
+        end
       end
     else
       puts 'List of books is empty'
